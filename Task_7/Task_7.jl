@@ -6,9 +6,6 @@ function MarkChess(r)
     moves_from_start_west, flag = movementsandcountmovesandswitchflag(r, West, flag)
     moves_from_start_sud, flag = movementsandcountmovesandswitchflag(r, Sud, flag)
 
-
-    #markchessstyle(r, Ost)
-
     flag = markrowbyflags(r, side, flag)
     while !isborder(r, Nord)
         move!(r, Nord)
@@ -16,7 +13,7 @@ function MarkChess(r)
         side = inverse(side)
         flag = markrowbyflags(r, side, flag)
     end
-
+    
     movements(r, West)
     movements(r, Sud)
     movementsbyfixmoves(r, Ost, moves_from_start_west)
@@ -62,44 +59,4 @@ function markrowbyflags(r, side, flag)
         putmarker!(r)
     end
     return flag
-end
-
-function markchessstyle(r, side)
-    while !isborder(r, HorizonSide((Int(side) + 1) % 4))
-        markrowchessstyle_odd(r, side)
-        if !ismarker(r)
-            move!(r, HorizonSide((Int(side) + 1) % 4))
-            markrowchessstyle_odd(r, inverse(side))
-        else 
-            move!(r, HorizonSide((Int(side) + 1) % 4))
-            markrowchessstyle_even(r, inverse(side))
-        end
-        if !isborder(r, HorizonSide((Int(side) + 1) % 4))
-            move!(r, HorizonSide((Int(side) + 1) % 4))
-            if isborder(r, HorizonSide((Int(side) + 1) % 4))
-                markrowchessstyle_odd(r, side)
-            end
-        end
-    end
-end
-
-function markrowchessstyle_odd(r, side)
-    putmarker!(r)
-    while !isborder(r, side)
-        move!(r, side)
-        if !isborder(r, side)
-            move!(r, side)
-            putmarker!(r)
-        end
-    end
-end
-
-function markrowchessstyle_even(r, side)
-    while !isborder(r, inverse(side))
-        move!(r, inverse(side))
-        putmarker!(r)
-        if !isborder(r, inverse(side))
-            move!(r, inverse(side))
-        end
-    end
 end
