@@ -13,6 +13,10 @@ function AverageTemperature(r)
     return sum/counter
 end
 
+function inverse(side)
+    return HorizonSide((Int(side) + 2) % 4)
+end
+
 function movementsandcheckformarker(r, side, s, c)
     while !isborder(r, side)
         if ismarker(r)
@@ -22,16 +26,6 @@ function movementsandcheckformarker(r, side, s, c)
         move!(r, side)
     end
     return s, c
-end
-
-function movements(r, side)
-    while !isborder(r, side) 
-        move!(r, side)
-    end
-end
-
-function inverse(side)
-    return HorizonSide((Int(side) + 2) % 4)
 end
 
 function checktemperature(r, s, c)
