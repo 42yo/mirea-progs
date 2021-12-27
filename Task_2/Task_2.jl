@@ -6,7 +6,7 @@ function MarkPerimetr(r)
     end
 
     for side in 1:5
-        GoToTheWallAndMark(r, HorizonSide(side % 4))
+        GoToTheWallAndMark2(r, HorizonSide(side % 4))
     end
 
     while x != 0
@@ -15,7 +15,7 @@ function MarkPerimetr(r)
     end
 end
 
-function GoToTheWallAndMark(r, side)
+function GoToTheWallAndMark2(r, side)
     while isborder(r, side) != true
         if ismarker(r) == true
             break
