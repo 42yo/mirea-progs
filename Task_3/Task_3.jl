@@ -49,4 +49,3 @@ function movementsbyfixmoves(r, side, moves)
         moves -= 1
     end
 end
-
