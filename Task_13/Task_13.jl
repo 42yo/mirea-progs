@@ -23,4 +23,4 @@ end
 
 function inverse(side)
     return HorizonSide((Int(side) + 2) % 4)
-end 
+end
