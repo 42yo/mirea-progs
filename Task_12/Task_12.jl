@@ -46,3 +46,9 @@ function movelineandmarkntypechess(r, x_coordinate, y_coordinate, n, side)
     end
     return x_coordinate
 end
+
+function movements!(r, side)
+    while !isborder(r, side)
+        move!(r, side)
+    end
+end
